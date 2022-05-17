@@ -1,5 +1,12 @@
 number1 := 21.5;
 
+``it is multi line comment
+gvfdgdbfdgbfb
+f
+fdvdfgdfbgdbdtg
+geghtrgthth
+ ``
+
 if (number1 > 20) then {
     print "number1 grater than 20\n";
 

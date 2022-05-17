@@ -68,7 +68,7 @@
 /* Copy the first part of user declarations.  */
 
 /* Line 189 of yacc.c  */
-#line 1 "rkv.y"
+#line 1 ".\\rkv.y"
 
     #include <stdio.h>
     #include <stdlib.h>
@@ -167,7 +167,7 @@ typedef union YYSTYPE
 {
 
 /* Line 214 of yacc.c  */
-#line 27 "rkv.y"
+#line 27 ".\\rkv.y"
 
     double dValue;
     char *sValue;
@@ -1605,350 +1605,350 @@ yyreduce:
         case 2:
 
 /* Line 1455 of yacc.c  */
-#line 52 "rkv.y"
+#line 52 ".\\rkv.y"
     { exit(0); ;}
     break;
 
   case 4:
 
 /* Line 1455 of yacc.c  */
-#line 56 "rkv.y"
+#line 56 ".\\rkv.y"
     { ex((yyvsp[(2) - (2)].nPtr)); freeNode((yyvsp[(2) - (2)].nPtr)); ;}
     break;
 
   case 5:
 
 /* Line 1455 of yacc.c  */
-#line 59 "rkv.y"
+#line 59 ".\\rkv.y"
     { (yyval.nPtr) = opr(';', 2, NULL, NULL); ;}
     break;
 
   case 6:
 
 /* Line 1455 of yacc.c  */
-#line 60 "rkv.y"
+#line 60 ".\\rkv.y"
     { (yyval.nPtr) = (yyvsp[(1) - (2)].nPtr); ;}
     break;
 
   case 7:
 
 /* Line 1455 of yacc.c  */
-#line 61 "rkv.y"
+#line 61 ".\\rkv.y"
     { exit(0); ;}
     break;
 
   case 8:
 
 /* Line 1455 of yacc.c  */
-#line 62 "rkv.y"
+#line 62 ".\\rkv.y"
     { (yyval.nPtr) = opr(ASSIGN, 2, id((yyvsp[(1) - (4)].vName), SET), (yyvsp[(3) - (4)].nPtr)); ;}
     break;
 
   case 9:
 
 /* Line 1455 of yacc.c  */
-#line 63 "rkv.y"
+#line 63 ".\\rkv.y"
     { (yyval.nPtr) = opr(PRINT, 1, (yyvsp[(2) - (3)].nPtr)); ;}
     break;
 
   case 10:
 
 /* Line 1455 of yacc.c  */
-#line 64 "rkv.y"
+#line 64 ".\\rkv.y"
     { (yyval.nPtr) = opr(PRINT, 1, cons((yyvsp[(2) - (3)].sValue))); ;}
     break;
 
   case 11:
 
 /* Line 1455 of yacc.c  */
-#line 65 "rkv.y"
+#line 65 ".\\rkv.y"
     { (yyval.nPtr) = opr(SCAN, 1, id((yyvsp[(2) - (3)].vName), GET)); ;}
     break;
 
   case 12:
 
 /* Line 1455 of yacc.c  */
-#line 66 "rkv.y"
+#line 66 ".\\rkv.y"
     { (yyval.nPtr) = opr(WHILE, 2, (yyvsp[(2) - (4)].nPtr), (yyvsp[(4) - (4)].nPtr)); ;}
     break;
 
   case 13:
 
 /* Line 1455 of yacc.c  */
-#line 67 "rkv.y"
+#line 67 ".\\rkv.y"
     { (yyval.nPtr) = opr(FOR, 5, id((yyvsp[(2) - (12)].vName), GET), (yyvsp[(5) - (12)].nPtr), (yyvsp[(7) - (12)].nPtr), (yyvsp[(9) - (12)].nPtr), (yyvsp[(12) - (12)].nPtr)); ;}
     break;
 
   case 14:
 
 /* Line 1455 of yacc.c  */
-#line 68 "rkv.y"
+#line 68 ".\\rkv.y"
     { (yyval.nPtr) = opr(IF, 2, (yyvsp[(2) - (4)].nPtr), (yyvsp[(4) - (4)].nPtr)); ;}
     break;
 
   case 15:
 
 /* Line 1455 of yacc.c  */
-#line 69 "rkv.y"
+#line 69 ".\\rkv.y"
     { (yyval.nPtr) = opr(IF, 3, (yyvsp[(2) - (6)].nPtr), (yyvsp[(4) - (6)].nPtr), (yyvsp[(6) - (6)].nPtr)); ;}
     break;
 
   case 16:
 
 /* Line 1455 of yacc.c  */
-#line 70 "rkv.y"
+#line 70 ".\\rkv.y"
     { (yyval.nPtr) = (yyvsp[(2) - (3)].nPtr); ;}
     break;
 
   case 17:
 
 /* Line 1455 of yacc.c  */
-#line 73 "rkv.y"
+#line 73 ".\\rkv.y"
     { (yyval.nPtr) = (yyvsp[(1) - (1)].nPtr); ;}
     break;
 
   case 18:
 
 /* Line 1455 of yacc.c  */
-#line 74 "rkv.y"
+#line 74 ".\\rkv.y"
     { (yyval.nPtr) = opr(';', 2, (yyvsp[(1) - (2)].nPtr), (yyvsp[(2) - (2)].nPtr)); ;}
     break;
 
   case 19:
 
 /* Line 1455 of yacc.c  */
-#line 77 "rkv.y"
+#line 77 ".\\rkv.y"
     { (yyval.nPtr) = cond((yyvsp[(1) - (1)].dValue)); ;}
     break;
 
   case 20:
 
 /* Line 1455 of yacc.c  */
-#line 78 "rkv.y"
+#line 78 ".\\rkv.y"
     { (yyval.nPtr) = id((yyvsp[(1) - (1)].vName), GET); ;}
     break;
 
   case 21:
 
 /* Line 1455 of yacc.c  */
-#line 79 "rkv.y"
+#line 79 ".\\rkv.y"
     { (yyval.nPtr) = opr(PI, 0); ;}
     break;
 
   case 22:
 
 /* Line 1455 of yacc.c  */
-#line 80 "rkv.y"
+#line 80 ".\\rkv.y"
     { (yyval.nPtr) = opr(RANDOM, 2, (yyvsp[(3) - (6)].nPtr), (yyvsp[(5) - (6)].nPtr)); ;}
     break;
 
   case 23:
 
 /* Line 1455 of yacc.c  */
-#line 81 "rkv.y"
+#line 81 ".\\rkv.y"
     { (yyval.nPtr) = opr(LOG, 1, (yyvsp[(3) - (4)].nPtr)); ;}
     break;
 
   case 24:
 
 /* Line 1455 of yacc.c  */
-#line 82 "rkv.y"
+#line 82 ".\\rkv.y"
     { (yyval.nPtr) = opr(LOG, 2, (yyvsp[(3) - (6)].nPtr), (yyvsp[(5) - (6)].nPtr)); ;}
     break;
 
   case 25:
 
 /* Line 1455 of yacc.c  */
-#line 83 "rkv.y"
+#line 83 ".\\rkv.y"
     { (yyval.nPtr) = opr(EXP, 1, (yyvsp[(3) - (4)].nPtr)); ;}
     break;
 
   case 26:
 
 /* Line 1455 of yacc.c  */
-#line 84 "rkv.y"
+#line 84 ".\\rkv.y"
     { (yyval.nPtr) = opr(SQRT, 1, (yyvsp[(3) - (4)].nPtr)); ;}
     break;
 
   case 27:
 
 /* Line 1455 of yacc.c  */
-#line 85 "rkv.y"
+#line 85 ".\\rkv.y"
     { (yyval.nPtr) = opr(FLOOR, 1, (yyvsp[(3) - (4)].nPtr)); ;}
     break;
 
   case 28:
 
 /* Line 1455 of yacc.c  */
-#line 86 "rkv.y"
+#line 86 ".\\rkv.y"
     { (yyval.nPtr) = opr(CEIL, 1, (yyvsp[(3) - (4)].nPtr)); ;}
     break;
 
   case 29:
 
 /* Line 1455 of yacc.c  */
-#line 87 "rkv.y"
+#line 87 ".\\rkv.y"
     { (yyval.nPtr) = opr(ABS, 1, (yyvsp[(3) - (4)].nPtr)); ;}
     break;
 
   case 30:
 
 /* Line 1455 of yacc.c  */
-#line 88 "rkv.y"
+#line 88 ".\\rkv.y"
     { (yyval.nPtr) = opr(SIN, 1, (yyvsp[(3) - (4)].nPtr)); ;}
     break;
 
   case 31:
 
 /* Line 1455 of yacc.c  */
-#line 89 "rkv.y"
+#line 89 ".\\rkv.y"
     { (yyval.nPtr) = opr(ASIN, 1, (yyvsp[(3) - (4)].nPtr)); ;}
     break;
 
   case 32:
 
 /* Line 1455 of yacc.c  */
-#line 90 "rkv.y"
+#line 90 ".\\rkv.y"
     { (yyval.nPtr) = opr(COS, 1, (yyvsp[(3) - (4)].nPtr)); ;}
     break;
 
   case 33:
 
 /* Line 1455 of yacc.c  */
-#line 91 "rkv.y"
+#line 91 ".\\rkv.y"
     { (yyval.nPtr) = opr(ACOS, 1, (yyvsp[(3) - (4)].nPtr)); ;}
     break;
 
   case 34:
 
 /* Line 1455 of yacc.c  */
-#line 92 "rkv.y"
+#line 92 ".\\rkv.y"
     { (yyval.nPtr) = opr(TAN, 1, (yyvsp[(3) - (4)].nPtr)); ;}
     break;
 
   case 35:
 
 /* Line 1455 of yacc.c  */
-#line 93 "rkv.y"
+#line 93 ".\\rkv.y"
     { (yyval.nPtr) = opr(ATAN, 1, (yyvsp[(3) - (4)].nPtr)); ;}
     break;
 
   case 36:
 
 /* Line 1455 of yacc.c  */
-#line 94 "rkv.y"
+#line 94 ".\\rkv.y"
     { (yyval.nPtr) = opr(UMINUS, 1, (yyvsp[(2) - (2)].nPtr)); ;}
     break;
 
   case 37:
 
 /* Line 1455 of yacc.c  */
-#line 95 "rkv.y"
+#line 95 ".\\rkv.y"
     { (yyval.nPtr) = opr('^', 2, (yyvsp[(1) - (3)].nPtr), (yyvsp[(3) - (3)].nPtr)); ;}
     break;
 
   case 38:
 
 /* Line 1455 of yacc.c  */
-#line 96 "rkv.y"
+#line 96 ".\\rkv.y"
     { (yyval.nPtr) = opr('+', 2, (yyvsp[(1) - (3)].nPtr), (yyvsp[(3) - (3)].nPtr)); ;}
     break;
 
   case 39:
 
 /* Line 1455 of yacc.c  */
-#line 97 "rkv.y"
+#line 97 ".\\rkv.y"
     { (yyval.nPtr) = opr('-', 2, (yyvsp[(1) - (3)].nPtr), (yyvsp[(3) - (3)].nPtr)); ;}
     break;
 
   case 40:
 
 /* Line 1455 of yacc.c  */
-#line 98 "rkv.y"
+#line 98 ".\\rkv.y"
     { (yyval.nPtr) = opr('*', 2, (yyvsp[(1) - (3)].nPtr), (yyvsp[(3) - (3)].nPtr)); ;}
     break;
 
   case 41:
 
 /* Line 1455 of yacc.c  */
-#line 99 "rkv.y"
+#line 99 ".\\rkv.y"
     { (yyval.nPtr) = opr('/', 2, (yyvsp[(1) - (3)].nPtr), (yyvsp[(3) - (3)].nPtr)); ;}
     break;
 
   case 42:
 
 /* Line 1455 of yacc.c  */
-#line 100 "rkv.y"
+#line 100 ".\\rkv.y"
     { (yyval.nPtr) = opr('%', 2, (yyvsp[(1) - (3)].nPtr), (yyvsp[(3) - (3)].nPtr)); ;}
     break;
 
   case 43:
 
 /* Line 1455 of yacc.c  */
-#line 101 "rkv.y"
+#line 101 ".\\rkv.y"
     { (yyval.nPtr) = opr('<', 2, (yyvsp[(1) - (3)].nPtr), (yyvsp[(3) - (3)].nPtr)); ;}
     break;
 
   case 44:
 
 /* Line 1455 of yacc.c  */
-#line 102 "rkv.y"
+#line 102 ".\\rkv.y"
     { (yyval.nPtr) = opr('>', 2, (yyvsp[(1) - (3)].nPtr), (yyvsp[(3) - (3)].nPtr)); ;}
     break;
 
   case 45:
 
 /* Line 1455 of yacc.c  */
-#line 103 "rkv.y"
+#line 103 ".\\rkv.y"
     { (yyval.nPtr) = opr(GE, 2, (yyvsp[(1) - (3)].nPtr), (yyvsp[(3) - (3)].nPtr)); ;}
     break;
 
   case 46:
 
 /* Line 1455 of yacc.c  */
-#line 104 "rkv.y"
+#line 104 ".\\rkv.y"
     { (yyval.nPtr) = opr(LE, 2, (yyvsp[(1) - (3)].nPtr), (yyvsp[(3) - (3)].nPtr)); ;}
     break;
 
   case 47:
 
 /* Line 1455 of yacc.c  */
-#line 105 "rkv.y"
+#line 105 ".\\rkv.y"
     { (yyval.nPtr) = opr('=', 2, (yyvsp[(1) - (3)].nPtr), (yyvsp[(3) - (3)].nPtr)); ;}
     break;
 
   case 48:
 
 /* Line 1455 of yacc.c  */
-#line 106 "rkv.y"
+#line 106 ".\\rkv.y"
     { (yyval.nPtr) = opr(NE, 2, (yyvsp[(1) - (3)].nPtr), (yyvsp[(3) - (3)].nPtr)); ;}
     break;
 
   case 49:
 
 /* Line 1455 of yacc.c  */
-#line 107 "rkv.y"
+#line 107 ".\\rkv.y"
     { (yyval.nPtr) = opr(AND, 2, (yyvsp[(1) - (3)].nPtr), (yyvsp[(3) - (3)].nPtr)); ;}
     break;
 
   case 50:
 
 /* Line 1455 of yacc.c  */
-#line 108 "rkv.y"
+#line 108 ".\\rkv.y"
     { (yyval.nPtr) = opr(OR, 2, (yyvsp[(1) - (3)].nPtr), (yyvsp[(3) - (3)].nPtr)); ;}
     break;
 
   case 51:
 
 /* Line 1455 of yacc.c  */
-#line 109 "rkv.y"
+#line 109 ".\\rkv.y"
     { (yyval.nPtr) = opr(NOT, 1, (yyvsp[(2) - (2)].nPtr)); ;}
     break;
 
   case 52:
 
 /* Line 1455 of yacc.c  */
-#line 110 "rkv.y"
+#line 110 ".\\rkv.y"
     { (yyval.nPtr) = (yyvsp[(2) - (3)].nPtr); ;}
     break;
 
@@ -2167,7 +2167,7 @@ yyreturn:
 
 
 /* Line 1675 of yacc.c  */
-#line 112 "rkv.y"
+#line 112 ".\\rkv.y"
 
 
 int getIndex(char *id, char mode)

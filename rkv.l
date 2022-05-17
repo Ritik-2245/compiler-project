@@ -13,6 +13,7 @@ EXPO    [Ee][-+]?[0-9]+
 
 %%
 "#".*   /* Single-line comment */
+"``"(.|\n)*"``" /* multi line comment*/
 
 [0-9]+|[0-9]+"."[0-9]*{EXPO}?|"."?[0-9]+{EXPO}? {
     yylval.dValue = atof(yytext);
