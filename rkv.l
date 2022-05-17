@@ -37,6 +37,8 @@ EXPO    [Ee][-+]?[0-9]+
 ">="    return GE;
 "<="    return LE;
 "!="    return NE;
+"while" return WHILE;
+"for"   return FOR;
 "if"    return IF;
 "else"  return ELSE;
 "then"  return THEN;
@@ -49,7 +51,20 @@ EXPO    [Ee][-+]?[0-9]+
 "exit"  return EXIT;
 
 "PI"    return PI;
+
+"random"    return RANDOM;
+"log"       return LOG;
+"exp"       return EXP;
+"sqrt"      return SQRT;
+"floor"     return FLOOR;
+"ceil"      return CEIL;
 "abs"       return ABS;
+"sin"       return SIN;
+"asin"      return ASIN;
+"cos"       return COS;
+"acos"      return ACOS;
+"tan"       return TAN;
+"atan"      return ATAN;
 
 {ID} {
     yylval.vName = strdup(yytext);

@@ -42,24 +42,37 @@
      NUMBER = 258,
      VARIABLE = 259,
      STRING = 260,
-     IF = 261,
-     THEN = 262,
-     PRINT = 263,
-     ASSIGN = 264,
-     RANDOM = 265,
-     PI = 266,
-     SCAN = 267,
-     ABS = 268,
-     EXIT = 269,
-     IFX = 270,
-     ELSE = 271,
-     OR = 272,
-     AND = 273,
-     NE = 274,
-     LE = 275,
-     GE = 276,
-     NOT = 277,
-     UMINUS = 278
+     WHILE = 261,
+     FOR = 262,
+     IF = 263,
+     THEN = 264,
+     PRINT = 265,
+     ASSIGN = 266,
+     EXIT = 267,
+     RANDOM = 268,
+     PI = 269,
+     SCAN = 270,
+     LOG = 271,
+     EXP = 272,
+     SQRT = 273,
+     FLOOR = 274,
+     CEIL = 275,
+     ABS = 276,
+     SIN = 277,
+     ASIN = 278,
+     COS = 279,
+     ACOS = 280,
+     TAN = 281,
+     ATAN = 282,
+     IFX = 283,
+     ELSE = 284,
+     OR = 285,
+     AND = 286,
+     NE = 287,
+     LE = 288,
+     GE = 289,
+     NOT = 290,
+     UMINUS = 291
    };
 #endif
 
@@ -80,7 +93,7 @@ typedef union YYSTYPE
 
 
 /* Line 1676 of yacc.c  */
-#line 84 "rkv.tab.h"
+#line 97 "rkv.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

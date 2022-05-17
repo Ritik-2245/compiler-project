@@ -1,4 +1,4 @@
-marks := 74;
+marks := 79;
 
 print "Marks: ";
 print marks;

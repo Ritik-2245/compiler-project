@@ -2,7 +2,7 @@
     #include <stdio.h>
     #include <stdlib.h>
     #include <stdarg.h>
-    #include <string.h>    //gcc -o wind lex.yy.c rkv.tab.c 
+    #include <string.h>
     #include <time.h>
     #include <math.h>
     #include "rkv.h"
@@ -34,7 +34,7 @@
 %token <dValue> NUMBER
 %token <vName> VARIABLE
 %token <sValue> STRING
-%token IF THEN PRINT ASSIGN RANDOM PI SCAN ABS EXIT
+%token WHILE FOR IF THEN PRINT ASSIGN EXIT RANDOM PI SCAN LOG EXP SQRT FLOOR CEIL ABS SIN ASIN COS ACOS TAN ATAN
 %nonassoc IFX
 %nonassoc ELSE
 
@@ -63,6 +63,8 @@ statement : ';' { $$ = opr(';', 2, NULL, NULL); }
           | PRINT expression ';' { $$ = opr(PRINT, 1, $2); }
           | PRINT STRING ';' { $$ = opr(PRINT, 1, cons($2)); }
           | SCAN VARIABLE ';' { $$ = opr(SCAN, 1, id($2, GET)); }
+          | WHILE expression THEN statement { $$ = opr(WHILE, 2, $2, $4); }
+          | FOR VARIABLE ':' '(' expression ',' expression ',' expression ')' THEN statement { $$ = opr(FOR, 5, id($2, GET), $5, $7, $9, $12); }
           | IF expression THEN statement %prec IFX { $$ = opr(IF, 2, $2, $4); }
           | IF expression THEN statement ELSE statement { $$ = opr(IF, 3, $2, $4, $6); }
           | '{' statement_list '}' { $$ = $2; }
@@ -75,7 +77,20 @@ statement_list : statement { $$ = $1; }
 expression : NUMBER { $$ = cond($1); }
            | VARIABLE { $$ = id($1, GET); }
            | PI { $$ = opr(PI, 0); }
+           | RANDOM '(' expression ',' expression ')' { $$ = opr(RANDOM, 2, $3, $5); }
+           | LOG '(' expression ')' { $$ = opr(LOG, 1, $3); }
+           | LOG '(' expression ',' expression ')' { $$ = opr(LOG, 2, $3, $5); }
+           | EXP '(' expression ')' { $$ = opr(EXP, 1, $3); }
+           | SQRT '(' expression ')' { $$ = opr(SQRT, 1, $3); }
+           | FLOOR '(' expression ')' { $$ = opr(FLOOR, 1, $3); }
+           | CEIL '(' expression ')' { $$ = opr(CEIL, 1, $3); }
            | ABS '(' expression ')' { $$ = opr(ABS, 1, $3); }
+           | SIN '(' expression ')' { $$ = opr(SIN, 1, $3); }
+           | ASIN '(' expression ')' { $$ = opr(ASIN, 1, $3); }
+           | COS '(' expression ')' { $$ = opr(COS, 1, $3); }
+           | ACOS '(' expression ')' { $$ = opr(ACOS, 1, $3); }
+           | TAN '(' expression ')' { $$ = opr(TAN, 1, $3); }
+           | ATAN '(' expression ')' { $$ = opr(ATAN, 1, $3); }
            | '-' expression %prec UMINUS { $$ = opr(UMINUS, 1, $2); }
            | expression '^' expression { $$ = opr('^', 2, $1, $3); }
            | expression '+' expression { $$ = opr('+', 2, $1, $3); }
@@ -217,6 +232,20 @@ double ex(nodeType *p) {
         case typeId: return sym[p->id.i];
         case typeOpr:
             switch (p->opr.oper) {
+                case WHILE:
+                    while (ex(p->opr.op[0]))
+                        ex(p->opr.op[1]);
+                    return 0;
+                case FOR:
+                {                    
+                    sym[p->opr.op[0]->id.i] = ex(p->opr.op[1]);     /* start */
+                    double end = ex(p->opr.op[2]), step = ex(p->opr.op[3]);
+                    while (FOR_CONDITION(sym[p->opr.op[0]->id.i], end, step)) {
+                        ex(p->opr.op[4]);
+                        sym[p->opr.op[0]->id.i] += step;
+                    }
+                    return 0;
+                }
                 case IF:
                     if (ex(p->opr.op[0]))
                         ex(p->opr.op[1]);
@@ -255,10 +284,38 @@ double ex(nodeType *p) {
                     scanf("%lf", &dValue);
                     return sym[p->opr.op[0]->id.i] = dValue;
                 }
-                
-                
+                case RANDOM:
+                {
+                    double lower = ex(p->opr.op[0]), upper = ex(p->opr.op[1]);
+                    srand(seed += 912);
+                    if (upper - lower < 1)
+                        return ((double)rand() * (upper - lower)) / (double)RAND_MAX + lower;
+                    else 
+                        return ((double)rand() / RAND_MAX) + (rand() % ((int)upper - (int)lower)) + lower;
+                }
+                case LOG:
+                {
+                    if (p->opr.nops == 1) return log(ex(p->opr.op[0]));
+                    else return log(ex(p->opr.op[0])) / log(ex(p->opr.op[1]));
+                }
+                case EXP:
+                {
+                    return exp(ex(p->opr.op[0]));
+                }
+                case SQRT:
+                {
+                    return sqrt(ex(p->opr.op[0]));
+                }
+                case FLOOR: return floor(ex(p->opr.op[0]));
+                case CEIL: return ceil(ex(p->opr.op[0]));
                 case ABS: return fabs(ex(p->opr.op[0]));
                 case PI: return M_PI;
+                case SIN: return sin(ex(p->opr.op[0]));
+                case ASIN: return asin(ex(p->opr.op[0]));
+                case COS: return cos(ex(p->opr.op[0]));
+                case ACOS: return acos(ex(p->opr.op[0]));
+                case TAN: return tan(ex(p->opr.op[0]));
+                case ATAN: return atan(ex(p->opr.op[0]));
                 case ';':
                     ex(p->opr.op[0]);
                     return ex(p->opr.op[1]);
