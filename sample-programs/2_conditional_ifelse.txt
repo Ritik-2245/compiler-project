@@ -8,7 +8,7 @@ geghtrgthth
  ``
 
 if (number1 > 20) then {
-    print "number1 grater than 20\n";
+    print "number1 grater than 20\n"
 
     number2 := 0;
     if number2 = 0 then number2 := -1;      # nested if-else
